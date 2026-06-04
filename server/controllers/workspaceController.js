@@ -1,3 +1,4 @@
+import { sendInviteEmail } from '../utils/sendEmail.js';
 import Workspace from '../models/Workspace.js';
 import Task from '../models/Task.js';
 import User from '../models/User.js';
@@ -199,7 +200,12 @@ export const inviteMember = async (req, res) => {
     await workspace.save();
 
     const inviteLink = `${process.env.CLIENT_URL}/invite/${token}`;
-    console.log(`📧 Invite link for ${email}: ${inviteLink}`);
+    await sendInviteEmail({
+  to: email,
+  workspaceName: workspace.name,
+  inviterName: req.user.username,
+  inviteLink,
+});
     res.json({ success: true, message: `Invitation sent to ${email}`, inviteLink });
   } catch (err) {
     console.error('inviteMember error:', err);
