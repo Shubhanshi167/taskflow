@@ -4,9 +4,9 @@ import axios from './axiosConfig.js';
 export const authAPI = {
   register: (data) => axios.post('/auth/register', data),
   login: (data) => axios.post('/auth/login', data),
-  getMe: () => axios.get('/auth/me'),
-  updateProfile: (data) => axios.put('/auth/profile', data),
-  changePassword: (data) => axios.put('/auth/password', data),
+  getMe: () => axios.get('/users/me'),
+  updateProfile: (data) => axios.put('/users/me', data),
+  changePassword: (data) => axios.put('/users/me', data),
 };
 
 // WORKSPACES
@@ -41,4 +41,5 @@ export const notificationAPI = {
   markAllRead: () => axios.put('/notifications/read-all'),
   clear: () => axios.delete('/notifications/clear'),
 };
+
 export default axios;
