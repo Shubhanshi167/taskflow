@@ -99,7 +99,7 @@ export default function Navbar() {
           </div>
           <span
             style={{
-              fontWeight: 800, fontSize: "18px", letterSpacing: "-0.02em",
+              fontWeight: 800, fontSize: "17px", letterSpacing: "-0.02em",
               background: "linear-gradient(135deg, #60a5fa, #06b6d4)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
@@ -110,15 +110,20 @@ export default function Navbar() {
         </Link>
 
         {/* ── CENTER: Nav links or page label ── */}
-        <div
-          className="hidden-mobile"
-          style={{
-            flex: 1, display: "flex",
-            alignItems: "center", justifyContent: "center",
-          }}
-        >
+       <div
+  className="hidden-mobile"
+  style={{
+    flex: 1,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    minWidth: 0,
+    overflow: "hidden",
+  }}
+>
           {isLanding && !user && (
-            <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "10px",
+flexWrap: "nowrap" }}>
              {[
   ["#features", "Features"],
   ["#how-it-works", "How it works"],
