@@ -45,11 +45,16 @@ app.use(
     origin: [
       'http://localhost:5173',
       process.env.CLIENT_URL,
+      'https://taskflow-six-ochre.vercel.app',
     ].filter(Boolean),
+
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
 
     credentials: true,
   })
 );
+
+app.options('*', cors());
 
 
 // ======================
@@ -87,8 +92,8 @@ app.use('/api/workspaces', workspaceRoutes);
 
 app.use('/api/users', userRoutes);
 
-
 app.use('/api', taskRoutes);
+
 app.use('/api/notifications', notificationRoutes);
 
 
@@ -120,7 +125,5 @@ app.use(errorHandler);
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  console.log(
-    `✅ Server running on port ${PORT}`
-  );
+  console.log(`✅ Server running on port ${PORT}`);
 });
